@@ -8,14 +8,38 @@
     tekst:test
 
     <script>
-        console.log("Nasz pierwszy skrypt!");
-		if(confirm("treść komunikatu"))
+	//geo test
+	const options = {
+	  enableHighAccuracy: true,
+	  timeout: 5000,
+	  maximumAge: 0
+	};
+
+	function success(pos) {
+	  const crd = pos.coords;
+
+	  console.log('Your current position is:');
+	  console.log(`Latitude : ${crd.latitude}`);
+	  console.log(`Longitude: ${crd.longitude}`);
+	  console.log(`More or less ${crd.accuracy} meters.`);
+	}
+
+	function error(err) {
+	  console.warn(`ERROR(${err.code}): ${err.message}`);
+	}
+
+	navigator.geolocation.getCurrentPosition(success, error, options);    
+	    
+	    
+	// alert test
+        console.log("test log into console");
+		if(confirm("testing confirm function"))
 		{
-			alert("zgoda");
+			alert("confirmed");
 		}
 		else
 		{
-			alert("bez zgody");
+			alert("declined");
 		}
     </script>
 </body>
