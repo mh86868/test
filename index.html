@@ -9,6 +9,9 @@
 
     <script>
 	//geo test
+	let globalLat = 0.0;
+	let globalLon = 0.0;
+	    
 	const options = {
 	  enableHighAccuracy: true,
 	  timeout: 5000,
@@ -23,7 +26,10 @@
 	  console.log(`Longitude: ${crd.longitude}`);
 	  console.log(`More or less ${crd.accuracy} meters.`);
 		
-	 alert(`Latitude : ${crd.latitude}  Longitude: ${crd.longitude}`);
+	  globalLat = crd.latitude;
+	  globalLon = crd.longitude;
+		
+	 alert(`local: Latitude : ${crd.latitude}  Longitude: ${crd.longitude}`);
 	}
 
 	function error(err) {
@@ -43,6 +49,8 @@
 		{
 			alert("declined");
 		}
+	    
+	 alert(`global: Latitude : ${globalLat}  Longitude: ${globalLon}`);
     </script>
 </body>
 </html>
