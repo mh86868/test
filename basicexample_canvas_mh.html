@@ -46,6 +46,9 @@
     </div>
 
     <script type="text/javascript">
+      let globalLat = 0.0;
+      let globalLon = 0.0;      
+      
       function commandscallback(cmd) {
         console.log('command: ' + cmd)
       }
@@ -60,12 +63,8 @@
           const crd = pos.coords;
 
           alert(`local: Latitude : ${crd.latitude}  Longitude: ${crd.longitude}`);
-          panel.loadViewpoint(crd.latitude, crd.longitude, 'myLocation')
-
-          // animate to view
-          panel.azimut(209.0, 2.0)
-          panel.altitude(1.0, 1.0)
-          panel.fieldofview(45.0, 2.0)
+          globalLat = crd.latitude;
+          globalLon = crd.longitude;
         }
 
         function error(err) {
@@ -90,7 +89,7 @@
             console.log('ready')
             panel.settings.distanceUnit(1)
         
-            panel.loadViewpoint(46.53722, 8.12610, 'Finsteraarhorn')
+            panel.loadViewpoint(globalLat, globalLon, 'myPosition')
 
             // animate to view
             panel.azimut(209.0, 2.0)
