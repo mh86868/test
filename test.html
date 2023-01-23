@@ -6,8 +6,10 @@
 </head>
 <body>
     tekst:test
-
-    <script>
+	
+	<button id="buttonTest" class="button"> Click for position </button>
+    <script>  
+	    
 	//geo test
 	let globalLat = 0.0;
 	let globalLon = 0.0;
@@ -51,6 +53,18 @@
 		}
 	    
 	 alert(`global: Latitude : ${globalLat}  Longitude: ${globalLon}`);
+	    
+	    
+	 //button support
+	const btn = document.querySelector("#buttonTest");
+
+	    function elementClick() {
+		navigator.geolocation.getCurrentPosition(success, error, options);
+		alert(`global: Latitude : ${globalLat}  Longitude: ${globalLon}`);
+	    }
+	    
+    	btn.addEventListener("click", elementClick);
+	    
     </script>
 </body>
 </html>
