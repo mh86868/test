@@ -41,7 +41,7 @@
       </div>
 
       <footer>
-        <p>Footer</p>
+        <button id="buttonTest" class="button"> Click for position </button>
       </footer>
     </div>
 
@@ -102,6 +102,17 @@
         
         }
       }
+      
+      	 //button support
+	    const btn = document.querySelector("#buttonTest");
+
+	    function elementClick() {
+        navigator.geolocation.getCurrentPosition(success, error, options);
+        alert(`global: Latitude : ${globalLat}  Longitude: ${globalLon}`);
+       }
+	    
+    	btn.addEventListener("click", elementClick);
+      
     </script>
   </body>
 </html>
