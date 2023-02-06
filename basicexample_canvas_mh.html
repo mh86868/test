@@ -42,6 +42,7 @@
 
       <footer>
         <button id="buttonTest" class="button"> Click for position </button>
+	<button id="buttonSet" class="button"> Set position in panel </button>
       </footer>
     </div>
 
@@ -107,12 +108,18 @@
 	    const btn = document.querySelector("#buttonTest");
 
 	    function elementClick() {
-        navigator.geolocation.getCurrentPosition(success, error, options);
-        alert(`global: Latitude : ${globalLat}  Longitude: ${globalLon}`);
-       }
-	    
-    	btn.addEventListener("click", elementClick);
-      
+		navigator.geolocation.getCurrentPosition(success, error, options);
+		alert(`global: Latitude : ${globalLat}  Longitude: ${globalLon}`);
+	       }
+
+	    btn.addEventListener("click", elementClick);
+
+	    const btnSet = document.querySelector("#buttonSet");
+	    function elementClickSet() {
+		panel.loadViewpoint(globalLat, globalLon, 'myPosition')
+	    }
+		btnSet.addEventListener("click", elementClickSet);
+
     </script>
   </body>
 </html>
