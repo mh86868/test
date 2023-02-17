@@ -116,9 +116,12 @@
 
 	    const btnSet = document.querySelector("#buttonSet");
 	    function elementClickSet() {
-		panel.loadViewpoint(globalLat, globalLon, 'myPosition')
+		panel.loadViewpoint(globalLat, globalLon, 'myNewPosition')
+		panel.azimut(209.0, 2.0)
+		panel.altitude(1.0, 1.0)
+		panel.fieldofview(45.0, 2.0)
 	    }
-		btnSet.addEventListener("click", elementClickSet);
+	    btnSet.addEventListener("click", elementClickSet);
 
     </script>
   </body>
