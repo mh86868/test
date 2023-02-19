@@ -124,7 +124,8 @@
 				document.getElementById('infoLabel').innerHTML = 'x = ' + x + ' y = ' + y + ' z = ' + z;
 			}
 			globalClickIteration++
-			document.getElementById('infoLabel').innerHTML = 'clicked Orientation times:' + globalClickIteration;
+			//document.getElementById('infoLabel').innerHTML = 'clicked Orientation times:' + globalClickIteration;
+			document.getElementById('infoLabel').innerHTML = 'window.orientation:' + window.orientation;
 			window.addEventListener("deviceorientation", handleOrientation);
 		}
 		btnOrientation.addEventListener("click", elementClickOrientation);
