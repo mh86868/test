@@ -43,6 +43,8 @@
       <footer>
         <button id="buttonTest" class="button"> Click for position </button>
 	<button id="buttonSet" class="button"> Set position in panel </button>
+	<button id="buttonOrientation" class="button"> Orientation </button>
+	<label id = "infoLabel">Welcome to GeeksforGeeks</label>
       </footer>
     </div>
 
@@ -100,7 +102,7 @@
           });
 		
 		
-		
+	// button for set localization in panel
 	    const btnSet = document.querySelector("#buttonSet");
 	    function elementClickSet() {
 		panel.loadViewpoint(globalLat, globalLon, 'myNewPosition')
@@ -109,6 +111,20 @@
 		panel.fieldofview(45.0, 2.0)
 	    }
 	    btnSet.addEventListener("click", elementClickSet);
+		
+	// orientation support
+		const btnOrientation = document.querySelector("#buttonOrientation");
+		function elementClickOrientation() {
+			function handleOrientation(event) {
+				let x = event.beta; // In degree in the range [-180,180)
+				let y = event.gamma; // In degree in the range [-90,90)
+				let z = event.alpha; // In degree in the range [0,360)
+				
+				document.getElementById('infoLabel').innerHTML = 'x = ' + x;
+			}
+			window.addEventListener("deviceorientation", handleOrientation);
+		}
+		btnOrientation.addEventListener("click", elementClickOrientation);
         }
         else { // !caniuse
         
