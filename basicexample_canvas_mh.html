@@ -44,14 +44,15 @@
         <button id="buttonTest" class="button"> Click for position </button>
 	<button id="buttonSet" class="button"> Set position in panel </button>
 	<button id="buttonOrientation" class="button"> Orientation </button>
-	<label id = "infoLabel">Welcome to GeeksforGeeks</label>
+	<label id = "infoLabel">Info Label</label>
       </footer>
     </div>
 
     <script type="text/javascript">
-      let globalLat = 0.0;
-      let globalLon = 0.0;      
-      
+      let globalLat = 0.0
+      let globalLon = 0.0  
+      let globalClickIteration = 0
+	    
       function commandscallback(cmd) {
         console.log('command: ' + cmd)
       }
@@ -120,8 +121,10 @@
 				let y = event.gamma; // In degree in the range [-90,90)
 				let z = event.alpha; // In degree in the range [0,360)
 				
-				document.getElementById('infoLabel').innerHTML = 'x = ' + x;
+				document.getElementById('infoLabel').innerHTML = 'x = ' + x + ' y = ' + y + ' z = ' + z;
 			}
+			globalClickIteration++
+			document.getElementById('infoLabel').innerHTML = 'clicked Orientation times:' + globalClickIteration;
 			window.addEventListener("deviceorientation", handleOrientation);
 		}
 		btnOrientation.addEventListener("click", elementClickOrientation);
