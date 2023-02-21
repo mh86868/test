@@ -126,7 +126,22 @@
 			globalClickIteration++
 			//document.getElementById('infoLabel').innerHTML = 'clicked Orientation times:' + globalClickIteration;
 			document.getElementById('infoLabel').innerHTML = 'window.orientation:' + window.orientation;
-			window.addEventListener("deviceorientation", handleOrientation);
+			
+			if (typeof DeviceMotionEvent.requestPermission === 'function') {
+			    // Handle iOS 13+ devices.
+			    DeviceMotionEvent.requestPermission()
+			      .then((state) => {
+				if (state === 'granted') {
+				  window.addEventListener('devicemotion', handleOrientation);
+				} else {
+				  document.getElementById('infoLabel').innerHTML = 'Request to access the orientation was rejected'
+				}
+			      })
+			      .catch(console.error);
+			  } else {
+			   	// Handle regular non iOS 13+ devices.
+				window.addEventListener("deviceorientation", handleOrientation);
+			  }
 		}
 		btnOrientation.addEventListener("click", elementClickOrientation);
         }
